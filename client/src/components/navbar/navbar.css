@@ -5,6 +5,7 @@
     color: #f8f8f8;
     padding: 0.5rem;
     height: 4.5rem;
+    flex-grow: 1;
 }
 
 .left,.right {
