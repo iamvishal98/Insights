@@ -1,0 +1,49 @@
+.product-container {
+    /* background: #001529; */
+    padding: 1rem;
+    gap: 2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-container .ant-card {
+    background: #191F45;
+    border: 1px solid #191F45;
+    color: #f8f8f8; 
+    /* #0d1025 */
+    text-transform: capitalize;
+}
+
+.product-category {
+    color: #858585;
+    text-transform:lowercase;
+    margin-bottom: 0.5rem;
+}
+
+.product-price{
+    color: #ffedc2;
+    margin-bottom: 0.6rem;
+}
+
+.product-info {
+    color: #d3d4de;
+}
+
+.product-container .ant-collapse-item .ant-collapse-header {
+    color: white;
+    padding: 0px 16px;
+    padding-inline-start: 0px;
+}
+
+.product-container .ant-collapse-expand-icon {
+    margin-inline-start: 0px !important;
+
+}
+.product-container .ant-collapse-item .ant-collapse-content>.ant-collapse-content-box {
+    color: #a3a3a3;
+    padding: 16px 0px;
+ 
+}
+

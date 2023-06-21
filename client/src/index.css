@@ -8,3 +8,6 @@
   /* background-color: #191F45; */
 }
 
+.ant-layout-content {
+  max-height: calc(100vh - 4.5rem);
+}
