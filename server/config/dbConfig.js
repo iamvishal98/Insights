@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import User from "../model/User.js";
+import { dataUser } from "../data/data.js";
 const connectDb = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI);

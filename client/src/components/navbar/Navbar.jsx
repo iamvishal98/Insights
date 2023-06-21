@@ -4,12 +4,21 @@ import {
   MenuFoldOutlined,
 } from "@ant-design/icons";
 import { Layout, Input, Button } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../redux/general/generalSlice";
 import RightMenu from "./RightMenu";
 import "./navbar.css";
-const { Search } = Input;
 
 const Navbar = ({ toggleCollapsed, collapsed }) => {
+  const { Search } = Input;
+  const { user } = useSelector((state) => state.general);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUser("63701cc1f032398675000120"));
+  }, []);
+
   return (
     <Layout.Header theme="dark" className="navbar">
       <div className="left">
@@ -20,7 +29,6 @@ const Navbar = ({ toggleCollapsed, collapsed }) => {
         <Search
           placeholder="input search text"
           allowClear
-          //   onSearch={onSearch}
           style={{
             width: 200,
           }}
@@ -29,6 +37,7 @@ const Navbar = ({ toggleCollapsed, collapsed }) => {
       <div className="right">
         <SettingOutlined />
         <RightMenu />
+        <span>{user?.name}</span>
       </div>
     </Layout.Header>
   );
