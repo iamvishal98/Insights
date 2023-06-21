@@ -3,7 +3,7 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
 } from "@ant-design/icons";
-import { Layout, Input, Button } from "antd";
+import { Layout, Input, Button, Typography } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../redux/general/generalSlice";
@@ -12,6 +12,7 @@ import "./navbar.css";
 
 const Navbar = ({ toggleCollapsed, collapsed }) => {
   const { Search } = Input;
+  const { Text } = Typography;
   const { user } = useSelector((state) => state.general);
   const dispatch = useDispatch();
 
@@ -22,10 +23,12 @@ const Navbar = ({ toggleCollapsed, collapsed }) => {
   return (
     <Layout.Header theme="dark" className="navbar">
       <div className="left">
-        <Button type="primary" onClick={toggleCollapsed}>
-          {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-        </Button>
-        <h2>INSIGHTS</h2>
+        <div className="logo-btn">
+          <Button type="primary" onClick={toggleCollapsed}>
+            {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          </Button>
+          <h2>INSIGHTS</h2>
+        </div>
         <Search
           placeholder="input search text"
           allowClear
@@ -36,8 +39,11 @@ const Navbar = ({ toggleCollapsed, collapsed }) => {
       </div>
       <div className="right">
         <SettingOutlined />
+
         <RightMenu />
-        <span>{user?.name}</span>
+        <Text type="success" ellipsis>
+          {user?.name}
+        </Text>
       </div>
     </Layout.Header>
   );
