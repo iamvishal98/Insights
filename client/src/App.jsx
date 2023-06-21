@@ -11,6 +11,7 @@ import Navbar from "./components/navbar/Navbar";
 import Sider from "./components/sider/Sider";
 import Dashboard from "./screens/dashboard/Dashboard";
 import Products from "./screens/products/Products";
+import Customers from "./screens/customers/Customers";
 const { Header, Footer, Content } = Layout;
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/customers" element={<Customers />} />
             </Routes>
           </Content>
         </Layout>
