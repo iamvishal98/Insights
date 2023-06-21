@@ -1,0 +1,23 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #f8f8f8;
+    padding: 0.5rem;
+    height: 4.5rem;
+}
+
+.left,.right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.left{
+    width: 40%;
+    gap: 1rem;
+}
+
+.right {
+    width: 8%;
+    gap: 0.3rem;
+}
