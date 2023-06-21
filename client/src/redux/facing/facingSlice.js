@@ -3,6 +3,7 @@ import facingService from "./facingService";
 
 const initialState = {
   products: [],
+  customers: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -11,9 +12,27 @@ const initialState = {
 
 export const getProducts = createAsyncThunk(
   "/facing/getProducts",
-  async (userId, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
       return await facingService.getProducts();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const getCustomers = createAsyncThunk(
+  "/facing/getCustomers",
+  async (_, thunkAPI) => {
+    try {
+      return await facingService.getCustomers();
     } catch (error) {
       const message =
         (error.response &&
@@ -52,6 +71,20 @@ export const facingSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.products = [];
+      })
+      .addCase(getCustomers.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCustomers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.customers = action.payload;
+      })
+      .addCase(getCustomers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.customers = [];
       });
   },
 });

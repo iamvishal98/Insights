@@ -6,8 +6,14 @@ const getProducts = async () => {
   return response.data;
 };
 
+const getCustomers = async () => {
+  const response = await axios.get(API_URL + "customers");
+  return response.data;
+};
+
 const facingService = {
   getProducts,
+  getCustomers,
 };
 
 export default facingService;
