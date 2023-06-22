@@ -1,5 +1,11 @@
 import mongoose from "mongoose";
-import { dataUser, dataProduct, dataProductStat } from "../data/data.js";
+import {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+} from "../data/data.js";
+import Transaction from "../model/Transaction.js";
 const connectDb = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI);
