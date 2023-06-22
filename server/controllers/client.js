@@ -35,8 +35,20 @@ export const getCustomers = async (req, res) => {
 
 export const getTransactions = async (req, res) => {
   try {
-    const { page = 1, pageSize = 20 } = req.query;
+    const { page = 1, pageSize = 20, sort = null } = req.query;
+
+    const generateSort = () => {
+      const sortParsed = JSON.parse(sort);
+      const sortFormatted = {
+        [sortParsed.field]: sortParsed.order === "ascend" ? 1 : -1,
+      };
+
+      return sortFormatted;
+    };
+    const sortFormatted = Boolean(sort) ? generateSort() : {};
+
     const transactions = await Transaction.find()
+      .sort(sortFormatted)
       .skip(page * pageSize)
       .limit(pageSize);
 
@@ -47,6 +59,6 @@ export const getTransactions = async (req, res) => {
       total,
     });
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json(error);
   }
 };

@@ -81,7 +81,7 @@ const Customers = () => {
   //     },
   //   ];
   return (
-    <div className="cutomers-table-container">
+    <div className="table-container">
       <div className="header">
         <h2>CUSTOMERS</h2>
         <p>See list of all your customers</p>
@@ -94,7 +94,6 @@ const Customers = () => {
           pageSize: 8,
           showSizeChanger: false,
         }}
-        theme="dark"
       />
     </div>
   );
