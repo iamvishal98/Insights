@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./transaction.css";
-import { Table } from "antd";
+import "../customers/customers.css";
+import { Table } from "ant-table-extensions";
 
 const Transaction = () => {
   const [pagination, setPagination] = useState({
     current: 1,
-    pageSize: 7,
+    pageSize: 8,
     total: 0,
     showSizeChanger: false,
   });
+  const [sorter, setSorter] = useState({});
   const [data, setData] = useState([]);
 
   const fetchTransaction = async () => {
@@ -17,7 +18,7 @@ const Transaction = () => {
     const response = await axios.get(
       `http://localhost:5050/client/transactions?page=${
         current - 1
-      }&pageSize=${pageSize}`
+      }&pageSize=${pageSize}&sort=${JSON.stringify(sorter)}`
     );
     if (response.data) {
       setData(response.data.transactions);
@@ -27,20 +28,33 @@ const Transaction = () => {
 
   useEffect(() => {
     fetchTransaction();
-  }, [pagination.current]);
+  }, [pagination.current, sorter]);
 
   const handleTableChange = (pagination, _, sorter) => {
     console.log(sorter);
     setPagination(pagination);
+    if (sorter.field) {
+      setSorter(sorter);
+    }
   };
   const columns = [
     {
       title: "TransactionId",
       dataIndex: "transactionId",
+      key: "transactionId",
+    },
+    {
+      title: "Nmber of Products",
+      dataIndex: "numberOfProducts",
+      key: "products",
     },
     {
       title: "Cost",
       dataIndex: "cost",
+      key: "cost",
+      sorter: true,
+      sortDirections: ["ascend", "descend"],
+      sortOrder: sorter.order,
     },
   ];
 
@@ -49,16 +63,23 @@ const Transaction = () => {
       key: transaction._id,
       transactionId: transaction.userId,
       cost: transaction.cost,
+      numberOfProducts: transaction.products.length,
     };
   });
 
   return (
-    <div className="transaction-container">
+    <div className="table-container">
+      <div className="header">
+        <h2>TRANSACTIONS</h2>
+        <p>See list of all your transactions</p>
+      </div>
       <Table
         columns={columns}
         dataSource={transactions}
         pagination={pagination}
         onChange={handleTableChange}
+        className="dark-table"
+        exportable
       />
     </div>
   );
