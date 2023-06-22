@@ -11,6 +11,9 @@
  
 }
 
+
+
+
 .dark-table th {
     background: #141937!important;
     color: #f8f8f8 !important;
@@ -20,7 +23,13 @@
     background: #141937!important;
     color: #f8f8f8;
   }
+  .dark-table .ant-table-column-sorter {
+    color: #f8f8f8 !important
+}
   
+  .dark-table .ant-table-column-sort {
+    background: #141937 !important
+}
   .dark-table tr:hover td {
     background-color: #21295c !important;
     color: #ffedc2 !important;
@@ -38,6 +47,7 @@
 .ant-table-wrapper .ant-table-container table>thead>tr:first-child >*:last-child {
     border-start-end-radius: 0;
 }
+
   
   
   

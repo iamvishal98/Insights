@@ -16,6 +16,8 @@ const Customers = () => {
     {
       title: "Name",
       dataIndex: "name",
+      sorter: (a, b) => a.name.localeCompare(b.name), // Custom sorter function
+      sortDirections: ["ascend", "descend"], // Sorting directions
     },
     {
       title: "City",
