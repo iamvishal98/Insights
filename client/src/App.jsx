@@ -12,6 +12,7 @@ import Sider from "./components/sider/Sider";
 import Dashboard from "./screens/dashboard/Dashboard";
 import Products from "./screens/products/Products";
 import Customers from "./screens/customers/Customers";
+import Transaction from "./screens/transaction/Transaction";
 const { Header, Footer, Content } = Layout;
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Customers />} />
+              <Route path="/transactions" element={<Transaction />} />
             </Routes>
           </Content>
         </Layout>
