@@ -1,0 +1,15 @@
+.geograph-container {
+    display: flex;
+
+    flex-direction: column;
+    gap: 2rem;
+    
+}
+.header-name {
+    color: #f8f8f8;
+}
+.map {
+    height: 35rem;
+  
+}
+
