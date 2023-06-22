@@ -13,3 +13,11 @@
   
 }
 
+@media (max-width:767px) { 
+    .map {
+        height: 30rem;
+      
+    }
+
+}
+

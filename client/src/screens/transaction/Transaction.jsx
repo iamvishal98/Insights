@@ -31,7 +31,6 @@ const Transaction = () => {
   }, [pagination.current, sorter]);
 
   const handleTableChange = (pagination, _, sorter) => {
-    console.log(sorter);
     setPagination(pagination);
     if (sorter.field) {
       setSorter(sorter);

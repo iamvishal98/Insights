@@ -39,11 +39,12 @@ const Navbar = ({ toggleCollapsed, collapsed }) => {
       </div>
       <div className="right">
         <SettingOutlined />
-
-        <RightMenu />
-        <Text type="success" ellipsis>
-          {user?.name}
-        </Text>
+        <div className="profile-content">
+          <RightMenu />
+          <Text type="success" ellipsis>
+            {user?.name}
+          </Text>
+        </div>
       </div>
     </Layout.Header>
   );

@@ -4,6 +4,8 @@ import facingService from "./facingService";
 const initialState = {
   products: [],
   customers: [],
+  transactionsData: [],
+  locationsData: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -45,6 +47,25 @@ export const getCustomers = createAsyncThunk(
     }
   }
 );
+
+export const getLocations = createAsyncThunk(
+  "/facing/getLocations",
+  async (_, thunkAPI) => {
+    try {
+      return await facingService.getLocations();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const facingSlice = createSlice({
   name: "facing",
   initialState,
@@ -85,6 +106,20 @@ export const facingSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.customers = [];
+      })
+      .addCase(getLocations.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getLocations.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.locationsData = action.payload;
+      })
+      .addCase(getLocations.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.locationsData = [];
       });
   },
 });
