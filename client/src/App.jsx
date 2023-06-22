@@ -13,7 +13,7 @@ import Dashboard from "./screens/dashboard/Dashboard";
 import Products from "./screens/products/Products";
 import Customers from "./screens/customers/Customers";
 import Transaction from "./screens/transaction/Transaction";
-import GeoGraphs from "./components/goegraphy/GeoGraphs";
+import GeoGraphs from "./screens/goegraphy/GeoGraphs";
 const { Header, Footer, Content } = Layout;
 
 const App = () => {

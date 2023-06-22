@@ -11,9 +11,15 @@ const getCustomers = async () => {
   return response.data;
 };
 
+const getLocations = async () => {
+  const response = await axios.get(API_URL + "geographs");
+  return response.data;
+};
+
 const facingService = {
   getProducts,
   getCustomers,
+  getLocations,
 };
 
 export default facingService;

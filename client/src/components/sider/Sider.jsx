@@ -14,6 +14,7 @@ import {
 import { Layout, Menu } from "antd";
 import "./sider.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import useWindowDimensions from "../../utils/useWindowDimensions";
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -27,10 +28,11 @@ function getItem(label, key, icon, children, type) {
 const Sider = ({ collapsed }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { width } = useWindowDimensions();
   const items = [
     getItem("Dashboard", "/dashboard", <HomeOutlined />),
     getItem(
-      !collapsed ? "Client Facing" : "",
+      !collapsed && width > 767 ? "Client Facing" : "",
       "clientFacing",
       "",
       [
@@ -42,7 +44,7 @@ const Sider = ({ collapsed }) => {
       "group"
     ),
     getItem(
-      !collapsed ? "Sales" : "",
+      !collapsed && width > 767 ? "Sales" : "",
       "sales",
       "",
       [
@@ -54,7 +56,7 @@ const Sider = ({ collapsed }) => {
       "group"
     ),
     getItem(
-      !collapsed ? "Management" : "",
+      !collapsed && width > 767 ? "Management" : "",
       "management",
       "",
       [
@@ -65,13 +67,14 @@ const Sider = ({ collapsed }) => {
     ),
   ];
   return (
-    <Layout.Sider className="slider" collapsed={collapsed}>
+    <Layout.Sider className="slider" collapsed={width > 767 ? collapsed : true}>
       <Menu
         mode="inline"
         theme="dark"
         items={items}
         defaultSelectedKeys={location.pathname}
         onClick={({ key }) => navigate(key)}
+        inlineCollapsed={width > 767 ? collapsed : true}
       />
     </Layout.Sider>
   );

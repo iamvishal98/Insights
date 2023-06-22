@@ -1,23 +1,17 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { geoData } from "./geoData";
 import "./geograph.css";
 import useWindowDimensions from "../../utils/useWindowDimensions";
+import { useDispatch, useSelector } from "react-redux";
+import { getLocations } from "../../redux/facing/facingSlice";
 const GeoGraphs = () => {
-  const [data, setData] = useState([]);
-  const { height, width } = useWindowDimensions();
-
-  const fetchLocations = async () => {
-    const response = await axios.get("http://127.0.0.1:5050/client/geographs");
-    if (response.data) {
-      setData(response.data);
-      console.log(response.data);
-    }
-  };
+  const { width } = useWindowDimensions();
+  const { locationsData } = useSelector((state) => state.facing);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchLocations();
+    dispatch(getLocations());
   }, []);
 
   return (
@@ -26,10 +20,10 @@ const GeoGraphs = () => {
         <h2 className="header-name">GEOGRAPHY</h2>
         <p>See list of all your customers around the globe</p>
       </div>
-      {data ? (
+      {locationsData ? (
         <div className="map">
           <ResponsiveChoropleth
-            data={data}
+            data={locationsData}
             features={geoData.features}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
             domain={[0, 60]}
