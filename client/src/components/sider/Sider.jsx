@@ -37,7 +37,7 @@ const Sider = ({ collapsed }) => {
         getItem("Products", "/products", <ShoppingCartOutlined />),
         getItem("Customers", "/customers", <TeamOutlined />),
         getItem("Transaction", "/transactions", <AccountBookOutlined />),
-        getItem("Geography", "geography", <GlobalOutlined />),
+        getItem("Geography", "/geographs", <GlobalOutlined />),
       ],
       "group"
     ),

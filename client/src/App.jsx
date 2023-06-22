@@ -13,6 +13,7 @@ import Dashboard from "./screens/dashboard/Dashboard";
 import Products from "./screens/products/Products";
 import Customers from "./screens/customers/Customers";
 import Transaction from "./screens/transaction/Transaction";
+import GeoGraphs from "./components/goegraphy/GeoGraphs";
 const { Header, Footer, Content } = Layout;
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
               <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Customers />} />
               <Route path="/transactions" element={<Transaction />} />
+              <Route path="/geographs" element={<GeoGraphs />} />
             </Routes>
           </Content>
         </Layout>
