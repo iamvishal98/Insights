@@ -1,13 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./overview.css";
 import { Select } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 import OverviewChart from "../../components/overviewChart/OverviewChart";
+import { getSalesData } from "../../redux/sales/salesSlice";
 
 const Overview = () => {
   const [view, setView] = useState("units");
+  const dispatch = useDispatch();
+  const { salesData } = useSelector((sales) => sales.sales);
+  const totalSales = salesData?.monthlyData?.map(
+    (monthData) => monthData.totalSales
+  );
+  const totalUnits = salesData?.monthlyData?.map(
+    (monthData) => monthData.totalUnits
+  );
+
+  useEffect(() => {
+    dispatch(getSalesData());
+  }, []);
   const handleChange = (value) => {
-    console.log(`selected ${value}`);
     setView(value);
+  };
+
+  const Linedata = {
+    labels: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
+    datasets: [
+      {
+        label: view === "sales" ? "Sales" : "units",
+        data: view === "sales" ? totalSales : totalUnits,
+        borderColor: "rgb(75, 192, 192)",
+      },
+    ],
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
   };
   return (
     <div className="overivew-container">
@@ -25,7 +70,7 @@ const Overview = () => {
                 { value: "units", label: "Units" },
               ]}
             />
-            <OverviewChart view={view} />
+            <OverviewChart view={view} data={Linedata} options={options} />
           </div>
         </div>
       </div>
