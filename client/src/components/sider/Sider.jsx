@@ -51,7 +51,7 @@ const Sider = ({ collapsed }) => {
         getItem("Overview", "/overview", <GitlabOutlined />),
         getItem("Daily", "daily", <HourglassOutlined />),
         getItem("Monthly", "/monthly", <CalendarOutlined />),
-        getItem("BreakDown", "breakdown", <RadarChartOutlined />),
+        getItem("BreakDown", "/breakdown", <RadarChartOutlined />),
       ],
       "group"
     ),
@@ -60,8 +60,8 @@ const Sider = ({ collapsed }) => {
       "management",
       "",
       [
-        getItem("Admin", "admin", <VerifiedOutlined />),
-        getItem("Performance", "performance", <RiseOutlined />),
+        getItem("Admin", "/admin", <VerifiedOutlined />),
+        getItem("Performance", "/performance", <RiseOutlined />),
       ],
       "group"
     ),
