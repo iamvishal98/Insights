@@ -14,6 +14,7 @@ import Products from "./screens/products/Products";
 import Customers from "./screens/customers/Customers";
 import Transaction from "./screens/transaction/Transaction";
 import GeoGraphs from "./screens/goegraphy/GeoGraphs";
+import Overview from "./screens/overview/Overview";
 const { Header, Footer, Content } = Layout;
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
               <Route path="/customers" element={<Customers />} />
               <Route path="/transactions" element={<Transaction />} />
               <Route path="/geographs" element={<GeoGraphs />} />
+              <Route path="/overview" element={<Overview />} />
             </Routes>
           </Content>
         </Layout>
