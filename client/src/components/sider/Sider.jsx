@@ -48,7 +48,7 @@ const Sider = ({ collapsed }) => {
       "sales",
       "",
       [
-        getItem("Overview", "overview", <GitlabOutlined />),
+        getItem("Overview", "/overview", <GitlabOutlined />),
         getItem("Daily", "daily", <HourglassOutlined />),
         getItem("Monthly", "monthly", <CalendarOutlined />),
         getItem("BreakDown", "breakdown", <RadarChartOutlined />),
