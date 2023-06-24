@@ -4,7 +4,7 @@ import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 Chart.register(CategoryScale);
 
-const OverviewChart = ({ view, data, options }) => {
+const OverviewChart = ({ data, options }) => {
   return (
     <div className="line-chart-view">
       <Line data={data} options={options} className="line-chart" />{" "}

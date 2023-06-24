@@ -22,13 +22,23 @@ const Breakdown = () => {
       },
     ],
   };
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          color: "#f8f8f8", // Change the font color of the legend labels here
+        },
+      },
+    },
+  };
+
   return (
     <div className="breakdown-container">
       <div className="header">
         <h2 style={{ color: "#f8f8f8" }}>BREAKDOWN</h2>
         <p>Breakdown of sales by category</p>
         <div className="chart-container">
-          <DoughnutChart data={data} />
+          <DoughnutChart data={data} options={options} />
         </div>
       </div>
     </div>

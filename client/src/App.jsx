@@ -17,6 +17,7 @@ import GeoGraphs from "./screens/goegraphy/GeoGraphs";
 import Overview from "./screens/overview/Overview";
 import Monthly from "./screens/monthly/Monthly";
 import Breakdown from "./screens/breakdown/Breakdown";
+import Daily from "./screens/daily/Daily";
 const { Header, Footer, Content } = Layout;
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
               <Route path="/overview" element={<Overview />} />
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />
+              <Route path="/daily" element={<Daily />} />
             </Routes>
           </Content>
         </Layout>
