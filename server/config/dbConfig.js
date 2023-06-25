@@ -5,8 +5,9 @@ import {
   dataProductStat,
   dataTransaction,
   dataOverallStat,
+  dataAffiliateStat,
 } from "../data/data.js";
-import OverallStat from "../model/OverallStat.js";
+import AffiliateStat from "../model/AffiliateStat.js";
 const connectDb = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI);

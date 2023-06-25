@@ -7,8 +7,15 @@ const getadminData = async () => {
   return response.data;
 };
 
+const getPerformanceData = async (userId) => {
+  const response = await axios.get(API_URL + `/perfromance/${userId}`);
+
+  return response.data;
+};
+
 const managementService = {
   getadminData,
+  getPerformanceData,
 };
 
 export default managementService;

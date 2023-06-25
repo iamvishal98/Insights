@@ -19,6 +19,7 @@ import Monthly from "./screens/monthly/Monthly";
 import Breakdown from "./screens/breakdown/Breakdown";
 import Daily from "./screens/daily/Daily";
 import Admin from "./screens/admins/Admin";
+import Performance from "./screens/performance/Performance";
 const { Header, Footer, Content } = Layout;
 
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
               <Route path="/breakdown" element={<Breakdown />} />
               <Route path="/daily" element={<Daily />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/performance" element={<Performance />} />
             </Routes>
           </Content>
         </Layout>

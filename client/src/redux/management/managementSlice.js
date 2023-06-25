@@ -3,6 +3,7 @@ import managementService from "./managementService";
 
 const initialState = {
   adminData: [],
+  perfromanceData: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -14,6 +15,24 @@ export const getadminData = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       return await managementService.getadminData();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const getPerformanceData = createAsyncThunk(
+  "/management/getPerformanceData",
+  async (userId, thunkAPI) => {
+    try {
+      return await managementService.getPerformanceData(userId);
     } catch (error) {
       const message =
         (error.response &&
@@ -52,6 +71,20 @@ export const managementSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.adminData = null;
+      })
+      .addCase(getPerformanceData.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getPerformanceData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.perfromanceData = action.payload;
+      })
+      .addCase(getPerformanceData.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.perfromanceData = null;
       });
   },
 });
