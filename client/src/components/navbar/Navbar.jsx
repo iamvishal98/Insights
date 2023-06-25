@@ -17,7 +17,7 @@ const Navbar = ({ toggleCollapsed, collapsed }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUser("63701cc1f032398675000120"));
+    dispatch(getUser("63701cc1f03239b7f700000e"));
   }, []);
 
   return (
