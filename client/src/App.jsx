@@ -18,6 +18,7 @@ import Overview from "./screens/overview/Overview";
 import Monthly from "./screens/monthly/Monthly";
 import Breakdown from "./screens/breakdown/Breakdown";
 import Daily from "./screens/daily/Daily";
+import Admin from "./screens/admins/Admin";
 const { Header, Footer, Content } = Layout;
 
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />
               <Route path="/daily" element={<Daily />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
           </Content>
         </Layout>

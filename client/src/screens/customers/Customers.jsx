@@ -91,7 +91,7 @@ const Customers = () => {
         dataSource={data}
         className="dark-table"
         pagination={{
-          pageSize: 8,
+          pageSize: 7,
           showSizeChanger: false,
         }}
       />
