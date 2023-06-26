@@ -6,7 +6,7 @@ import { Bar } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import "./dashbord.css";
-import StatCard from "../../components/statCard/statCard";
+import StatCard from "../../components/statCard/StatCard";
 import ProductLoading from "../../components/product/ProductLoading";
 
 Chart.register(CategoryScale);
