@@ -25,6 +25,8 @@ function getItem(label, key, icon, children, type) {
   };
 }
 
+console.log(location.pathname);
+
 const Sider = ({ collapsed }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -72,7 +74,9 @@ const Sider = ({ collapsed }) => {
         mode="inline"
         theme="dark"
         items={items}
-        defaultSelectedKeys={location.pathname}
+        defaultSelectedKeys={
+          location.pathname === "/" ? "/dashboard" : location.pathname
+        }
         onClick={({ key }) => navigate(key)}
       />
     </Layout.Sider>
