@@ -2,13 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getadminData } from "../../redux/management/managementSlice";
 import { Table } from "antd";
-import "../customers/customers.css";
 
 const Admin = () => {
   const dispatch = useDispatch();
-  const { adminData } = useSelector((state) => state.management);
-
-  console.log(adminData);
+  const { adminData, isLoading } = useSelector((state) => state.management);
 
   const columns = [
     {
@@ -61,6 +58,7 @@ const Admin = () => {
       </div>
 
       <Table
+        loading={isLoading}
         columns={columns}
         dataSource={data}
         className="dark-table"

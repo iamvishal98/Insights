@@ -47,13 +47,8 @@ const Monthly = () => {
   };
 
   const options = {
-    plugins: {
-      legend: {
-        onClick: function (e) {
-          e.stopPropagation();
-        },
-      },
-    },
+    responsive: true,
+    maintainAspectRatio: false,
   };
   return (
     <div className="monthly-container">

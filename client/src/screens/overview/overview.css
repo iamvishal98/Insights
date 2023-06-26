@@ -10,10 +10,8 @@
 }
 .line-chart-view {
     margin-top: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
+
 .line-chart {
     height: 30rem !important;
 }

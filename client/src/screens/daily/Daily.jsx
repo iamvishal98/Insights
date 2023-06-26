@@ -56,8 +56,10 @@ const Daily = () => {
   }, [salesData, startDate, endDate]);
 
   const handleDateRangeChange = (dates) => {
-    setStartDate(dates[0].$d);
-    setEndDate(dates[1].$d);
+    if (dates) {
+      setStartDate(dates[0].$d);
+      setEndDate(dates[1].$d);
+    }
   };
 
   const disabledDate = (current) => {
@@ -82,7 +84,7 @@ const Daily = () => {
   return (
     <div>
       <div className="header">
-        <h2 style={{ color: "#f8f8f8" }}>DAILY</h2>
+        <h2>DAILY(2021)</h2>
         <p>See daywise sales</p>
       </div>
       <div className="line-chart-container">

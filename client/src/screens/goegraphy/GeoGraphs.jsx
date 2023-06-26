@@ -17,7 +17,7 @@ const GeoGraphs = () => {
   return (
     <div className="geograph-container">
       <div className="header">
-        <h2 className="header-name">GEOGRAPHY</h2>
+        <h2>GEOGRAPHY</h2>
         <p>See list of all your customers around the globe</p>
       </div>
       {locationsData ? (
