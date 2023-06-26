@@ -11,7 +11,7 @@ const getUser = async (userID) => {
   return response.data;
 };
 
-const getDashboardStats = async (userID) => {
+const getDashboardStats = async () => {
   const response = await axios.get(API_URL + "dashboard");
   return response.data;
 };

@@ -6,7 +6,9 @@ import { Table } from "antd";
 const Performance = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.general);
-  const { perfromanceData } = useSelector((state) => state.management);
+  const { perfromanceData, isLoading } = useSelector(
+    (state) => state.management
+  );
 
   const data = perfromanceData?.sales?.map((product) => {
     return {
@@ -41,7 +43,7 @@ const Performance = () => {
       title: "Cost",
       dataIndex: "cost",
       key: "cost",
-      sorter: true,
+      sorter: (a, b) => a.cost - b.cost,
     },
   ];
   return (
@@ -51,11 +53,12 @@ const Performance = () => {
         <p>Track your affilaite sales performance here</p>
       </div>
       <Table
+        loading={isLoading}
         columns={columns}
         dataSource={data}
         className="dark-table"
         pagination={{
-          pageSize: 7,
+          pageSize: 8,
           showSizeChanger: false,
         }}
       />

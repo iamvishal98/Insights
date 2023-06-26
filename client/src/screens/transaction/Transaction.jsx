@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../customers/customers.css";
 import { Table } from "ant-table-extensions";
 
 const Transaction = () => {

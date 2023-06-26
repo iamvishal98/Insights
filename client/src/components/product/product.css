@@ -1,5 +1,4 @@
 .product-container {
-    /* background: #001529; */
     padding: 1rem;
     gap: 2rem;
     width: 100%;
@@ -12,8 +11,8 @@
     background: #191F45;
     border: 1px solid #191F45;
     color: #f8f8f8; 
-    /* #0d1025 */
     text-transform: capitalize;
+    height: 100%;
 }
 
 .product-category {

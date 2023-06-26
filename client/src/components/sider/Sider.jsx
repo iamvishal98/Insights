@@ -74,7 +74,6 @@ const Sider = ({ collapsed }) => {
         items={items}
         defaultSelectedKeys={location.pathname}
         onClick={({ key }) => navigate(key)}
-        inlineCollapsed={width > 767 ? collapsed : true}
       />
     </Layout.Sider>
   );

@@ -6,7 +6,7 @@ import { getCustomers } from "../../redux/facing/facingSlice";
 
 const Customers = () => {
   const dispatch = useDispatch();
-  const { customers } = useSelector((state) => state.facing);
+  const { customers, isLoading } = useSelector((state) => state.facing);
 
   useEffect(() => {
     dispatch(getCustomers());
@@ -47,39 +47,6 @@ const Customers = () => {
       phone: customer.phoneNumber,
     };
   });
-
-  //   console.log(data1);
-
-  //   const data = [
-  //     {
-  //       key: "1",
-  //       name: "John Brown",
-  //       chinese: 98,
-  //       math: 60,
-  //       english: 70,
-  //     },
-  //     {
-  //       key: "2",
-  //       name: "Jim Green",
-  //       chinese: 98,
-  //       math: 66,
-  //       english: 89,
-  //     },
-  //     {
-  //       key: "3",
-  //       name: "Joe Black",
-  //       chinese: 98,
-  //       math: 90,
-  //       english: 70,
-  //     },
-  //     {
-  //       key: "4",
-  //       name: "Jim Red",
-  //       chinese: 88,
-  //       math: 99,
-  //       english: 89,
-  //     },
-  //   ];
   return (
     <div className="table-container">
       <div className="header">
@@ -87,6 +54,7 @@ const Customers = () => {
         <p>See list of all your customers</p>
       </div>
       <Table
+        loading={isLoading}
         columns={columns}
         dataSource={data}
         className="dark-table"

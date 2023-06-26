@@ -48,6 +48,7 @@ const Overview = () => {
   };
 
   const options = {
+    responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {

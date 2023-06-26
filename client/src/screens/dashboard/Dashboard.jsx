@@ -7,13 +7,13 @@ import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import "./dashbord.css";
 import StatCard from "../../components/statCard/statCard";
+import ProductLoading from "../../components/product/ProductLoading";
 
 Chart.register(CategoryScale);
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { dashboardStat } = useSelector((state) => state.general);
-  console.log(dashboardStat);
+  const { dashboardStat, isLoading } = useSelector((state) => state.general);
   useEffect(() => {
     dispatch(getDashboardStats());
   }, []);
@@ -35,7 +35,6 @@ const Dashboard = () => {
   const chartData = dashboardStat?.monthlyData
     ?.slice(0, 7)
     .map(({ totalSales }) => totalSales);
-  console.log(chartData);
 
   const Linedata = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
@@ -44,13 +43,13 @@ const Dashboard = () => {
         label: "Sales",
         data: chartData,
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-          "rgba(255, 205, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(201, 203, 207, 0.2)",
+          "rgba(255, 99, 132)",
+          "rgba(255, 159, 64)",
+          "rgba(255, 205, 86)",
+          "rgba(75, 192, 192)",
+          "rgba(54, 162, 235)",
+          "rgba(153, 102, 255)",
+          "rgba(201, 203, 207)",
         ],
         borderColor: [
           "rgb(255, 99, 132)",
@@ -91,7 +90,7 @@ const Dashboard = () => {
       title: "Cost",
       dataIndex: "cost",
       key: "cost",
-      sorter: true,
+      sorter: (a, b) => a.cost - b.cost,
     },
   ];
 
@@ -112,43 +111,52 @@ const Dashboard = () => {
       </div>
       <div className="dashboard-stats">
         <div className="stat-cards">
-          <Row gutter={[12, 12]}>
-            <StatCard
-              title={"Total Customers"}
-              value={dashboardStat?.totalCustomers}
-              changeTitle={"Since Last Month"}
-              changeValue={10}
-              increase={true}
-            />
-            <StatCard
-              title={"Sales Today"}
-              value={dashboardStat?.todayStats?.totalSales}
-              changeTitle={"Since Last Day"}
-              changeValue={salesChange}
-              increase={true}
-            />
-            <StatCard
-              title={"Units Solds"}
-              value={dashboardStat?.todayStats?.totalUnits}
-              changeTitle={"Since Last Day"}
-              changeValue={unitsChange}
-              increase={false}
-            />
-            <StatCard
-              title={"Monthly Sales"}
-              value={dashboardStat?.thisMonthStats?.totalSales}
-              changeTitle={"Since Last Month"}
-              changeValue={3676}
-              increase={true}
-            />
-          </Row>
+          {!isLoading ? (
+            <Row gutter={[12, 12]}>
+              <StatCard
+                title={"Total Customers"}
+                value={dashboardStat?.totalCustomers}
+                changeTitle={"Since Last Month"}
+                changeValue={10}
+                increase={true}
+              />
+              <StatCard
+                title={"Sales Today"}
+                value={dashboardStat?.todayStats?.totalSales}
+                changeTitle={"Since Last Day"}
+                changeValue={salesChange}
+                increase={true}
+              />
+              <StatCard
+                title={"Units Solds"}
+                value={dashboardStat?.todayStats?.totalUnits}
+                changeTitle={"Since Last Day"}
+                changeValue={unitsChange}
+                increase={false}
+              />
+              <StatCard
+                title={"Monthly Sales"}
+                value={dashboardStat?.thisMonthStats?.totalSales}
+                changeTitle={"Since Last Month"}
+                changeValue={367}
+                increase={true}
+              />
+            </Row>
+          ) : (
+            <Row gutter={[12, 12]}>
+              <ProductLoading />
+              <ProductLoading />
+              <ProductLoading />
+              <ProductLoading />
+            </Row>
+          )}
         </div>
 
-        <h3>Sales Chart</h3>
+        <h3 className="sub-heading">Sales Chart</h3>
         <div className="dasboard-line-chart">
           <Bar data={Linedata} options={options} />
         </div>
-        <h3>Top Transactions</h3>
+        <h3 className="sub-heading">Top Transactions</h3>
         <div className="dashboard-table">
           <Table
             dataSource={transactions}

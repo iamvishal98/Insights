@@ -9,9 +9,97 @@
   /* background-color: #191F45; */
 }
 
+
+/* COMMON STYLES */
+
 .ant-layout-content {
   max-height: calc(100vh - 4.5rem);
   background: #001a32;
   padding: 1rem;
 overflow: auto;
+}
+
+
+/* SCREEN HEADERS */
+.header {
+  color: #f8f8f8;
+}
+
+.header > p {
+  color: #ffedc2;
+  margin-top: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+/* TABLE */
+.table-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #f8f8f8;
+  overflow: scroll;
+
+}
+
+.dark-table th {
+  background: #141937!important;
+  color: #f8f8f8 !important;
+}
+
+.dark-table .ant-table-tbody {
+  background: #141937!important;
+  color: #f8f8f8;
+}
+.dark-table .ant-table-column-sorter {
+  color: #f8f8f8 !important
+}
+
+.dark-table .ant-table-column-sort {
+  background: #141937 !important
+}
+.dark-table tr:hover td {
+  background-color: #21295c !important;
+  color: #ffedc2 !important;
+}
+
+
+.dark-table .ant-pagination > li > a, button, .ant-pagination-item-ellipsis {
+  color: #a3a3a3 !important;
+}
+
+.ant-table-wrapper .ant-table-container table>thead>tr:first-child >*:first-child {
+  border-start-start-radius: 0;
+}
+
+.ant-table-wrapper .ant-table-container table>thead>tr:first-child >*:last-child {
+  border-start-end-radius: 0;
+}
+
+
+/* NO-SUPPORT-WINDOW */
+.no-support {
+ display: none;
+}
+
+
+
+@media (max-width:750px) {
+  .no-support {
+    position: absolute;
+    height: 100vh;
+    width: 100vh;
+    /* margin: auto; */
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(15px);
+  }
+  
+  .alert-box {
+    height: 8rem;
+  }
+
 }
