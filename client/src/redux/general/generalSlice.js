@@ -5,6 +5,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: user ? user : null,
+  dashboardStat: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -28,6 +29,25 @@ export const getUser = createAsyncThunk(
     }
   }
 );
+
+export const getDashboardStats = createAsyncThunk(
+  "/general/getDashboardStats",
+  async (_, thunkAPI) => {
+    try {
+      return await generalService.getDashboardStats();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const generalSlice = createSlice({
   name: "general",
   initialState,
@@ -54,6 +74,20 @@ export const generalSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.user = null;
+      })
+      .addCase(getDashboardStats.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getDashboardStats.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.dashboardStat = action.payload;
+      })
+      .addCase(getDashboardStats.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.dashboardStat = null;
       });
   },
 });

@@ -1,0 +1,33 @@
+.header {
+    margin-bottom: 2rem;
+}
+
+/* .dashboard-visualization {
+    display: flex;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.dasboard-line-chart {
+  flex: 1;
+  width: 500px;
+  height: 350px;
+
+}
+
+.dashboard-table {
+  flex: 2;
+  width: 400px;
+
+} */
+
+.dashboard-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem
+}
+
+.dasboard-line-chart {
+    min-height: 20rem;
+}
+
