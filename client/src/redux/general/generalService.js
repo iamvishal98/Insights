@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://127.0.0.1:5050/general/";
+const API_URL = `${import.meta.env.VITE_BASE_URL}general/`;
 
 const getUser = async (userID) => {
   const response = await axios.get(API_URL + `users/${userID}`);

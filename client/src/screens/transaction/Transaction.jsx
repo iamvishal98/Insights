@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Table } from "ant-table-extensions";
+import "./transaction.css";
 
 const Transaction = () => {
   const [pagination, setPagination] = useState({
     current: 1,
-    pageSize: 8,
+    pageSize: 7,
     total: 0,
     showSizeChanger: false,
   });
@@ -15,7 +16,7 @@ const Transaction = () => {
   const fetchTransaction = async () => {
     const { current, pageSize } = pagination;
     const response = await axios.get(
-      `http://localhost:5050/client/transactions?page=${
+      `${import.meta.env.VITE_BASE_URL}client/transactions?page=${
         current - 1
       }&pageSize=${pageSize}&sort=${JSON.stringify(sorter)}`
     );
