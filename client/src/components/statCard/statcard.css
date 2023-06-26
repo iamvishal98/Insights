@@ -1,0 +1,14 @@
+.stat-card .ant-card {
+    background: #191F45;
+    border: 1px solid #191F45;
+    color: #f8f8f8; 
+    text-transform: capitalize;
+    /* #ffedc2 */
+}
+.ant-statistic .ant-statistic-title {
+    color: #f8f8f8;
+}
+
+.ant-statistic .ant-statistic-content { 
+    color: #ffedc2 ;
+}

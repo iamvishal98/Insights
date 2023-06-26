@@ -11,8 +11,14 @@ const getUser = async (userID) => {
   return response.data;
 };
 
+const getDashboardStats = async (userID) => {
+  const response = await axios.get(API_URL + "dashboard");
+  return response.data;
+};
+
 const generalService = {
   getUser,
+  getDashboardStats,
 };
 
 export default generalService;

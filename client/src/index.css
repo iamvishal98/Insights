@@ -13,5 +13,5 @@
   max-height: calc(100vh - 4.5rem);
   background: #001a32;
   padding: 1rem;
-
+overflow: auto;
 }
